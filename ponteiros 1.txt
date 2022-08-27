@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+	int numero1, numero2;
+	int *ponteiro1, *ponteiro2;
+	ponteiro1=&numero1;
+	ponteiro2=&numero2;
+	
+	printf("Digite o primeiro número: ");
+	scanf("%d", ponteiro1);
+	printf("Digite o segundo número: ");
+	scanf("%d", ponteiro2);
+	printf("\n Soma de %d+%d=%d", (*ponteiro1), (*ponteiro2),(*ponteiro1)+(*ponteiro2));
+	printf("\n Multiplicação entre %d*%d=%d", (*ponteiro1), (*ponteiro2),(*ponteiro1)*(*ponteiro2));
+	printf("\n Subtração entre %d-%d=%d", (*ponteiro1), (*ponteiro2),(*ponteiro1)-(*ponteiro2));
+	printf("\n Duvisão entre %d/%d=%d", (*ponteiro1), (*ponteiro2),(*ponteiro1)/(*ponteiro2));
+	
+	
+	return(0);
+} 
