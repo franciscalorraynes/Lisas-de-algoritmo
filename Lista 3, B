@@ -37,7 +37,7 @@ int main(void){
         }
     }
     int **matriz=multiplicacao(a, b, n);
-    printf("A soma dos elementos de A + B \n");
+    printf("A multiplicacao dos elementos de A * B \n");
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
             printf(" %d \t ", matriz[i][j]);
