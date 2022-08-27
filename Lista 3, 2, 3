@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<locale.h>
+#include<stdlib.h>
+int posicao(int **matriz, int n, int Posicao);
+void mat_libera(int** mat, int n);
+int main(void){
+	
+	int i, j, n;
+	setlocale(LC_ALL, "Portuguese");
+ 	printf("Universidade Federal Rural do Semi-Árido\n ");
+ 	printf("Diciplina: PEX1243 \n");
+ 	printf("Aluna: Francisca Lorrayne");
+ 	printf("\n\n");
+	printf("Digite as dimensões da matriz: ");
+	scanf("%d", &n);
+	
+	int **matriz=(int**)(malloc(n*sizeof(int*)));
+	for(i=0;i<n;i++){
+		matriz[i]=(int*)malloc(n*sizeof(int));
+	}
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			printf("Digite a posição da matriz: ");
+			scanf("%d", &matriz[i][j]);
+		}
+	}
+int r=posicao(matriz, n, 6);
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			printf("Resultado:%d \n", r);
+	}
+}
+  mat_libera(matriz, n);
+return 0;
+}
+void mat_libera(int** mat, int n){
+  int i;
+     for(i = 0; i < n; i++){
+        free(mat[i]); // libera cada uma das linhas
+     }
+    free(mat);
+}
+int posicao(int **matriz, int n, int p){
+	int i, j;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(matriz[i][j]==p){
+				return 1;
+			}
+		}
+	}
+	return 0;
+
+}
