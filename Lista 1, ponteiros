@@ -1,4 +1,33 @@
+//QUESTÃO 1
 
+X=  3;
+Y=4;
+P=4;
+
+// QUESTÃO 2
+
+A) Mensagem de erro.
+
+B) Por que falta o & comercinal no X, para armazenar o endereço de P, já que o programa está armazendo o valor do endereço.
+
+C) Não foi, pois  está faltando o & comercial.
+
+D) 		
+#include<stdio.h>
+
+		
+int main(void) {
+int x, *p;
+   x = 100;
+   p = &x;
+
+   printf("Valor de p = %p\tValor de *p = %d", p, *p);
+return 0;
+		}
+E) Foi sim.
+// QUESTÃO 3
+
+A resposta que sai é 30,20,10;
 
 //QUESTÃO 4
 
@@ -58,7 +87,7 @@ int main(void){
     
     char s = situacao(p1, p2, p3, faltas, aulas, &media);
 
-    printf("Nota 1,2,3=%.2f%.2f.2f\nTotal de aulas=%d\nTotal de faltas=%d\nMédia=%.2f", p1,p2,p3,aulas,faltas,media); // não consegui terminar aqui 
+    printf("Nota 1,2,3=%.2f%.2f.2f\nTotal de aulas=%d\nTotal de faltas=%d\nMédia=%.2f", p1,p2,p3,aulas,faltas,media); 
 
 return(0);
 }
