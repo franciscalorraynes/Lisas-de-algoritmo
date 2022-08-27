@@ -10,7 +10,7 @@ int main(void){
     setlocale(LC_ALL, "Portuguese");
 
     printf("\n\n");
-    printf("Digite a dimensÃ£o da matriz nxn:\n ");
+    printf("Digite a dimensão da matriz:\n ");
     scanf("%d", &n);
 
     int **a,**b;
@@ -36,8 +36,8 @@ int main(void){
             scanf("%d", &b[i][j]);
         }
     }
-    int **matriz=soma(a, b, n);
-    printf("A subtração dos elementos de A - B \n");
+    int **matriz=multiplicacao(a, b, n);
+    printf("A soma dos elementos de A + B \n");
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
             printf(" %d \t ", matriz[i][j]);
@@ -62,7 +62,7 @@ void mat_libera(int** mat, int n){
     free(mat);
 }
 
-int **soma(int **a, int **b, int n){
+int **multiplicacao(int **a, int **b, int n){
     int i, j;
     int **resul;
     resul=(int**)malloc(n*sizeof(int*));
@@ -71,7 +71,7 @@ int **soma(int **a, int **b, int n){
     }
     for( i=0;i<n;i++){
         for(j=0;j<n;j++){
-            resul[i][j]=a[i][j]-b[i][j];
+            resul[i][j]=a[i][j]*b[i][j];
         }
     }
     return resul;
