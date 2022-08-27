@@ -1,73 +1,79 @@
-//QUESTÃO 1
+//QUESTÃƒO 1
 #include<stdio.h>
 #include<stdlib.h>
 #include<locale.h>
 
 int **soma(int **a, int **b, int n);
-
+void mat_libera(int** mat, int n);
 int main(void){
-	int n, i, j;
-	setlocale(LC_ALL, "Portuguese");
-	printf("Universidade Federal Rural do Semi-Árido-UFERSA\n ");
- 	printf("Diciplina: PEX1243 \n");
- 	printf("Aluna: Francisca Lorrayne");
- 	printf("\n\n");
-	printf("Digite a dimensão da matriz:\n ");
-	scanf("%d", &n);
-	
-	int **a,**b;
-	a=(int **)(malloc(n*sizeof(int*)));
-	for(i=0;i<n;i++){
-		a[i]=(int*)(malloc(n*sizeof(int)));
-	}
-	b=(int**)(malloc(n*sizeof(int*)));
-	for(j=0;j<n;j++){
-		b[j]=(int*)(malloc(n*sizeof(int)));
-	}
-	printf("Matriz A:\n");
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			printf("Digite a quantidade de elementos: ");
-			scanf("%d", &a[i][j]);
-		}
-	}
-		printf("Matriz B:\n");
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			printf("Digite a quantidade de elementos: ");
-			scanf("%d", &b[i][j]);
-		}
-	}
-	int **matriz=soma(a, b, n);
-	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			printf("A soma dos elementos A e B = %d ", matriz[i][j]);
+    int n, i, j;
+    setlocale(LC_ALL, "Portuguese");
 
-		}
-	}
-		for(i=0;i<n;i++){
-			free(a[i]);
-		}
-			free(a);
-		for(i=0;i<n;i++){
-			free(b[i]);
-		}
-	free(b);
-	return(0);
-	
+    printf("\n\n");
+    printf("Digite a dimensÃ£o da matriz nxn:\n ");
+    scanf("%d", &n);
+
+    int **a,**b;
+    a=(int **)(malloc(n*sizeof(int*)));
+    for(i=0;i<n;i++){
+        a[i]=(int*)(malloc(n*sizeof(int)));
+    }
+    b=(int**)(malloc(n*sizeof(int*)));
+    for(j=0;j<n;j++){
+        b[j]=(int*)(malloc(n*sizeof(int)));
+    }
+    printf("Matriz A:\n");
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            printf("Digite os elementos: ");
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("Matriz B:\n");
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            printf("Digite os elementos: ");
+            scanf("%d", &b[i][j]);
+        }
+    }
+    int **matriz=soma(a, b, n);
+    printf("A soma dos elementos de A + B \n");
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            printf(" %d \t ", matriz[i][j]);
+
+        }
+    }
+
+    mat_libera(a, n);
+    mat_libera(b, n);
+
+
+    return(0);
+
 }
+
+
+void mat_libera(int** mat, int n){
+  int i;
+     for(i = 0; i < n; i++){
+        free(mat[i]); 
+     }
+    free(mat);
+}
+
 int **soma(int **a, int **b, int n){
-	int i, j;
-	int **resul;
-	resul=(int**)malloc(n*sizeof(int*));
-	for(i=0;i<n;i++){
-	resul[i]=(int*)malloc(n*sizeof(int));	
-	}
-	for( i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			resul[i][j]=a[i][j]+b[i][j];
-		}
-	}
-	return resul;
+    int i, j;
+    int **resul;
+    resul=(int**)malloc(n*sizeof(int*));
+    for(i=0;i<n;i++){
+        resul[i]=(int*)malloc(n*sizeof(int));
+    }
+    for( i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            resul[i][j]=a[i][j]+b[i][j];
+        }
+    }
+    return resul;
 
 }
