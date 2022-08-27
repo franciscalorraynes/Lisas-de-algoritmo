@@ -1,0 +1,82 @@
+
+
+//QUESTÃO 4
+
+#include<stdio.h>
+#include<locale.h>
+#include<math.h>
+
+ void calcula_hexagono(float l, float *area, float *perimetro); 
+ 
+ int main(void){
+ 	float lado, area, perimetro;
+ 	setlocale(LC_ALL, "Portuguese");
+ 	printf("Universidade Federal Rural do Semi-Árido\n ");
+ 	printf("Diciplina: PEX1243 \n");
+ 	printf("Aluna: Francisca Lorrayne");
+ 	printf("\n\n");
+ 	
+ 	
+ 	printf("Digite um lado do hexágono: ");
+ 		scanf("%f", &lado);
+ 	calcula_hexagono(lado, &area, &perimetro);
+ 	printf("A area do hexágono=%.2f\nO perimetro=%.2f\nO lado=%.2f	",area,perimetro, lado  );
+ 	return 0;
+ }
+  void calcula_hexagono(float l, float *area, float *perimetro){
+  	*area=(3*pow(l,2)*sqrt(3))/2;
+  	*perimetro=6*l;
+  }
+
+// QUESTÃO 5
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<locale.h>
+#include<math.h>
+
+char situacao(float p1, float p2, float p3, int faltas, int aulas, float *media);
+
+int main(void){
+    setlocale(LC_ALL, "Portuguese");
+    float p1, p2, p3, media;
+    int faltas,aulas;
+    printf("Universidade Federal Rural do Semi-Árido\n ");
+    printf("Diciplina: PEX1243 \n");
+    printf("Aluna: Francisca Lorrayne");
+    printf("\n\n");
+    printf("Digite a primeira nota: ");
+    scanf("%f", &p1);
+    printf("Digite a segunda nota: ");
+    scanf("%f", &p2);
+    printf("Digite a terceira nota: ");
+    scanf("%f", &p3);
+    printf("Digite o total de faltas: ");
+    scanf("%d", &faltas);
+    printf("Digite o total de aulas: ");
+    scanf("%d", &aulas);
+    
+    char s = situacao(p1, p2, p3, faltas, aulas, &media);
+
+    printf("Nota 1,2,3=%.2f%.2f.2f\nTotal de aulas=%d\nTotal de faltas=%d\nMédia=%.2f", p1,p2,p3,aulas,faltas,media); // não consegui terminar aqui 
+
+return(0);
+}
+
+char situacao(float p1, float p2, float p3, int faltas, int aulas, float *media){
+
+    *media=(p1+p2+p3)/3;
+    int a;
+    a=(100*faltas/aulas);
+
+    if(a<=25 && *media>=6){
+            return'A';
+        } 
+    else if(a<=25 && *media<6){
+            return'R'; 
+        }
+    else {
+            return'F'; 
+        }
+ 
+}
