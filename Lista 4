@@ -1,0 +1,112 @@
+//QUESTÃO 2
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct Aluno{   // declaração da struct com o comando typedef que "renomeia" a estrutura
+    int mat;  
+    char nome[60];
+    char turma [20];
+    float n1, n2, n3;
+    float media;
+}Aluno;
+
+void matricula(int n, Aluno**alunos); // Protótipo da função que armazena os dados dos alunos
+void lanca_notas(int n, Aluno**alunos); // Protótipo da função que armazena as notas dos alunos
+void imprime_tudo(int n, Aluno** alunos); // Protótipo da função que imprime as informações dos alunos 
+void imprime_turma(int n, Aluno** alunos, char turma); // Protótipo da função que imprime a média dos alunos
+void imprime_turma_aprovados(int n,Aluno**alunos, char turma); // Protótipo da função que imprime a reprovação
+int main(void){ 
+    int i, n;
+    Aluno**alunos;
+    char turma;
+    
+    printf("Digite a quantidade de alunos:");
+    scanf("%d", &n);
+    alunos=(Aluno**)malloc(n*sizeof(Aluno*)); // alocação do ponteiro dinamicamente
+	
+        matricula(n, alunos);
+        lanca_notas(n, alunos);
+   		imprime_tudo(n, alunos);
+   		imprime_turma( n, alunos, turma);
+   		imprime_turma_aprovados(n,alunos,turma);
+        return 0;
+}
+
+void matricula(int n, Aluno**alunos){  // função que recebe os dados dos alunos
+        
+    int j;
+     if (j<0 || j>=n) {
+     printf("Indice fora do limite do vetor\n");
+     exit(1);
+     }
+
+        for(j=0;j<n;j++){ //laço de repetição que passa pela quantidade digitada de alunos 
+    
+    printf("\nDigite seu %d.o nome: ", j+1); //pedindo dados do usuario e armazendo-o de acordo com a quantidade digitade de pessoas no começo
+    scanf(" %[^\n]",&alunos[j]->nome);
+    printf("Digite sua %d.a turma: ", j+1); //pedindo dados do usuario e armazendo-o de acordo com a quantidade digitade de pessoas no começo
+    scanf(" %[^\n]",&alunos[j]->turma);    
+    printf("Digite sua %d.a matricula: ", j+1); //pedindo dados do usuario e armazendo-o de acordo com a quantidade digitade de pessoas no começo
+    scanf("%d", &alunos[j]->mat);    
+    }    
+}
+void lanca_notas(int n, Aluno**alunos){ // estrutura que lança as notas, pede ao usuario e a armazena
+    int j;
+   if (j<0 || j>=n) {
+     printf("Indice fora do limite do vetor\n");
+     exit(1);
+     }
+        for(j=0;j<n;j++){
+    printf("Digite a %d.a nota: ", j+1);
+    scanf(" %f",&alunos[j]->n1);
+    printf("Digite a %d.a nota: ", j+1);
+    scanf(" %f",&alunos[j]->n2);    
+    printf("Digite a %d.a nota: ", j+1);
+    scanf("%f", &alunos[j]->n3);    
+    alunos[j]->media=(alunos[j]->n1+alunos[j]->n2+alunos[j]->n3)/3; // calculo da media
+    }
+}
+void imprime_tudo(int n, Aluno** alunos){ //função que recebe as medias e os dados dos alunos e a imprime
+	   int j;
+   if (j<0 || j>=n) {
+     printf("Indice fora do limite do vetor\n");
+     exit(1);
+     }
+        for(j=0;j<n;j++){
+    printf("O nome do %d.o aluno = %s\n ", j+1,alunos[j]->nome );
+    printf("A %d.a turma =%s:\n ", j+1, alunos[j]->turma);
+    printf("A %d.a matricula= %d\n", j+1, alunos[j]->mat);
+    printf("As notas = %.2f %.2f %.2f\n", alunos[j]->n1, alunos[j]->n2, alunos[j]->n3);
+	printf("A %d.a Media = %.2f \n", j+1, alunos[j]->media);
+}
+}
+void imprime_turma(int n, Aluno** alunos, char turma){ //função que mostra os dados da turma do aluno
+		   int j;
+   if (j<0 || j>=n) {
+     printf("Indice fora do limite do vetor\n");
+     exit(1);
+     }
+        for(j=0;j<n;j++){
+    printf("O %d.o nome = %s\n ", j+1,alunos[j]->nome );
+    printf("%d.a turma =%s\n ", j+1, alunos[j]->turma);
+    printf("Matricula %d =%d \n", j+1, alunos[j]->mat);
+}
+}
+void imprime_turma_aprovados(int n,Aluno**alunos, char turma){
+	int j;
+	   if (j<0 || j>=n) {
+     printf("Indice fora do limite do vetor\n");
+     exit(1);
+     }
+    for(j=0;j<n;j++){
+   		if(alunos[j]->media>=7){
+   			alunos[j]->imprime_turma(turma);
+   		
+		   }
+		   	if(alunos[j]->media<7){
+   			printf("\nReprovado");
+		   }
+}
+}
