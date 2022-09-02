@@ -1,13 +1,87 @@
-//QUESTÃO 2
+QUESTÃO 4
 
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<locale.h>
+
+//A	
+typedef struct Ingresso{  // função struct que armazena os dados do floar e char, usada com typedef para "renomear"
+	float preco;
+	char local[60];
+	char atracao[60];
+}Ingresso;
+
+void preenche(Ingresso* i); // prototipo da função que recebe os dados 
+void imprime(Ingresso* i); // prototipo da função que imprime os dados 
+void altera_preco(Ingresso* i, float valor); // prototipo da função que altera o preço 
+ void imprime_menor_maior_preco(int n, Ingresso* vet); // prototipo da função que imprime o maior e o menor preço
+
+int main(void){
+	setlocale(LC_ALL, "Portuguse");
+	Ingresso *i;
+	int n, v;
+	i=(Ingresso*)malloc(sizeof(Ingresso)); // alocação dinamica
+	preenche(i);
+	altera_preco(i, 10);
+	imprime(i); // imprime os dados
+	imprime_menor_maior_preco(n,i); // ler os dados da função maior e menor preço
+	free(i); //libera a memoria
+	return 0;
+}
+
+void preenche(Ingresso* i){ //função que ler os dados e armazena
+	
+	printf("Digite o local: : ");
+	scanf(" %[^\n]", &i->local);
+	printf("Digite a atração: ");
+	scanf(" %[^\n]", &i->atracao);
+	printf("Digite o valor do ingresso: ");
+	scanf(" %f", &i->preco);
+}
+//B
+void imprime(Ingresso* i){ //função que imprime os dados
+	printf("O valor do ingresso: %f\n ", i->preco);
+	printf("O local da atração: %s\n ", i->local);
+	printf("A atração: %s ", i->atracao);
+		
+}
+//c
+void altera_preco(Ingresso* i, float valor){ //função que altera o preço
+	i->preco=valor;	
+}
+
+ void imprime_menor_maior_preco(int n, Ingresso* vet){ //função que compara os preços e imprime o maior
+ 	int maior=0;
+	int menor=0;
+	int i;
+ 	for( i =0; i<n; i++){
+ 		if(maior<vet[i].preco){
+ 			maior=vet[i].preco;
+		 }
+		 if(menor>vet[i].preco){
+		 menor=vet[i].preco;
+		 }
+		 printf("O maior e menor respectivamente %d %d", maior, menor);
+	 }
+ 
+}
+
+
+
+
+
+
+//QUESTÃO 2
 
 #include<stdio.h>
 #include<stdlib.h>
 
+
 typedef struct Aluno{   // declaração da struct com o comando typedef que "renomeia" a estrutura
     int mat;  
     char nome[60];
-    char turma [20];
+    char turma;
     float n1, n2, n3;
     float media;
 }Aluno;
@@ -30,7 +104,8 @@ int main(void){
         lanca_notas(n, alunos);
    		imprime_tudo(n, alunos);
    		imprime_turma( n, alunos, turma);
-   		imprime_turma_aprovados(n,alunos,turma);
+   		imprime_turma_aprovados(n,alunos,'a');
+   		free(alunos);
         return 0;
 }
 
@@ -71,7 +146,7 @@ void lanca_notas(int n, Aluno**alunos){ // estrutura que lança as notas, pede a
 void imprime_tudo(int n, Aluno** alunos){ //função que recebe as medias e os dados dos alunos e a imprime
 	   int j;
    if (j<0 || j>=n) {
-     printf("Indice fora do limite do vetor\n");
+     printf("Indice fora do limite do vetor\n"); // para saber se tem limite na memoria
      exit(1);
      }
         for(j=0;j<n;j++){
@@ -94,19 +169,15 @@ void imprime_turma(int n, Aluno** alunos, char turma){ //função que mostra os 
     printf("Matricula %d =%d \n", j+1, alunos[j]->mat);
 }
 }
-void imprime_turma_aprovados(int n,Aluno**alunos, char turma){
-	int j;
-	   if (j<0 || j>=n) {
-     printf("Indice fora do limite do vetor\n");
-     exit(1);
-     }
+void imprime_turma_aprovados(int n, Aluno**alunos, char turma){ //função para mostrar a turma 
+    int j;
     for(j=0;j<n;j++){
-   		if(alunos[j]->media>=7){
-   			alunos[j]->imprime_turma(turma);
-   		
-		   }
-		   	if(alunos[j]->media<7){
-   			printf("\nReprovado");
-		   }
-}
+        if(alunos[j]!=NULL && alunos[j]->turma==turma){
+           if(alunos[j]->media>=7){
+                printf("\n Matricula:  %s \n", alunos[j]->mat);
+                printf("Nome: %s \n", alunos[j]->nome);
+                printf("Media: %f \n, APROVADO \n", alunos[j]->media);
+           }
+        }
+    }
 }
