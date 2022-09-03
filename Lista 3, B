@@ -3,50 +3,52 @@
 #include<stdlib.h>
 #include<locale.h>
 
-int **soma(int **a, int **b, int n);
-void mat_libera(int** mat, int n);
+int **soma(int **a, int **b, int n); // prototipo da função
+
+void mat_libera(int** mat, int n); // prototipo da função para liberar a matriz
+
 int main(void){
     int n, i, j;
     setlocale(LC_ALL, "Portuguese");
 
     printf("\n\n");
-    printf("Digite a dimensão da matriz:\n ");
+    printf("Digite a dimensão da matriz:\n "); //solicitação da dimensão da matriz
     scanf("%d", &n);
 
-    int **a,**b;
-    a=(int **)(malloc(n*sizeof(int*)));
-    for(i=0;i<n;i++){
+    int **a,**b; // vetores tipo int 
+    a=(int **)(malloc(n*sizeof(int*))); //alocação dinamica  de a
+    for(i=0;i<n;i++){ //laço de repetição que vai passar pelo valor alocado dinamicamente em a
         a[i]=(int*)(malloc(n*sizeof(int)));
     }
-    b=(int**)(malloc(n*sizeof(int*)));
-    for(j=0;j<n;j++){
-        b[j]=(int*)(malloc(n*sizeof(int)));
+    b=(int**)(malloc(n*sizeof(int*))); //alocação dinamica  de b
+    for(j=0;j<n;j++){ //laço de repetição que vai passar pelo valor alocado dinamicamente em b
+        b[j]=(int*)(malloc(n*sizeof(int))); 
     }
-    printf("Matriz A:\n");
-    for(i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            printf("Digite os elementos: ");
-            scanf("%d", &a[i][j]);
+    printf("Matriz A:\n"); 
+    for(i=0;i<n;i++){ //laço de repetição que  passa pela quantidade de elementos da matriz a solicitados pelo usuario 
+        for(j=0;j<n;j++){ 
+            printf("Digite os elementos: "); //solicita a quantidade de elementos  da matriz a ao usuario
+            scanf("%d", &a[i][j]); //leitura dos dados
         }
     }
-    printf("Matriz B:\n");
-    for(i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            printf("Digite os elementos: ");
-            scanf("%d", &b[i][j]);
+    printf("Matriz B:\n"); 
+    for(i=0;i<n;i++){ //laço de repetição que  passa pela quantidade de elementos da matriz b solicitados pelo usuario 
+        for(j=0;j<n;j++){ 
+            printf("Digite os elementos: "); //solicita a quantidade de elementos  da matriz a ao usuario
+            scanf("%d", &b[i][j]);  //leitura dos dados
         }
     }
-    int **matriz=multiplicacao(a, b, n);
-    printf("A multiplicacao dos elementos de A * B \n");
+    int **matriz=multiplicacao(a, b, n); // recebe os valores de A e B resultante da multiplicação
+    printf("A multiplicacao dos elementos de A * B \n"); 
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
-            printf(" %d \t ", matriz[i][j]);
+            printf(" %d \t ", matriz[i][j]); //exibe a  multiplicação
 
         }
     }
 
-    mat_libera(a, n);
-    mat_libera(b, n);
+    mat_libera(a, n); //função que libera a matriz a
+    mat_libera(b, n); //função que libera a matriz a
 
 
     return(0);
@@ -54,7 +56,7 @@ int main(void){
 }
 
 
-void mat_libera(int** mat, int n){
+void mat_libera(int** mat, int n){ //função que libera as matrizes alocada dinamicamente no int main
   int i;
      for(i = 0; i < n; i++){
         free(mat[i]); 
@@ -62,18 +64,18 @@ void mat_libera(int** mat, int n){
     free(mat);
 }
 
-int **multiplicacao(int **a, int **b, int n){
+int **multiplicacao(int **a, int **b, int n){ //função que faz a multiplicação das matrizes
     int i, j;
     int **resul;
-    resul=(int**)malloc(n*sizeof(int*));
+    resul=(int**)malloc(n*sizeof(int*)); //alocação dinamica de resul
     for(i=0;i<n;i++){
         resul[i]=(int*)malloc(n*sizeof(int));
     }
     for( i=0;i<n;i++){
         for(j=0;j<n;j++){
-            resul[i][j]=a[i][j]*b[i][j];
+            resul[i][j]=a[i][j]*b[i][j]; //multiplicação entre a matriz A e B digitadas no int main 
         }
     }
-    return resul;
+    return resul; // retorna o resultado da função
 
 }
