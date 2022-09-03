@@ -4,33 +4,33 @@
 #include<locale.h>
 
 int main(void){
-	int tamanho, i, soma, menor, maior;
+	int tamanho, i, soma, menor, maior; //declaração das variaveis
 	setlocale(LC_ALL, "Portuguese");
 	printf("Universidade Federal Rural do Semi-Árido-UFERSA\n ");
  	printf("Diciplina: PEX1243 \n");
  	printf("Aluna: Francisca Lorrayne");
  	printf("\n\n");
-	printf("Digite o tamanho do vetor:\n ");
+	printf("Digite o tamanho do vetor:\n "); //solicitação ao usuario do tamanho do vetor
 	scanf("%d", &tamanho);
-	int*vetor=(int*)malloc(tamanho*sizeof(int));
-	if(vetor==NULL){
-		printf("Não tem espaço suficente na memória!");
+	int*vetor=(int*)malloc(tamanho*sizeof(int)); //alocação dinamica
+	if(vetor==NULL){ //laço de repetição que verifica se a memoria
+		printf("Não tem espaço suficente na memória!"); 
 		exit(1);
 	}
-	for(i=0;i<tamanho;i++){
-		printf("Digite o tamanho do vetor: ");
+	for(i=0;i<tamanho;i++){ //laço de repetição que verifica e faz o loop até a afirmação ser falsa
+		printf("Digite o tamanho do vetor: "); //solicitação ao usuario
 		scanf("%d", &vetor[i]);
-		if(maior<vetor[i]){
-			maior=vetor[i];
+		if(maior<vetor[i]){ //laço de repetição que verufica qual o maior numero 
+			maior=vetor[i]; armazena o maior vetor em vetor
 		}
-		if(maior>vetor[i]){
-			menor=vetor[i];
+		if(maior>vetor[i]){ //laço de repetição que verufica qual o menor numero 
+			menor=vetor[i]; // armazena o menor vetor em vetor
 		}
 		
 	}
-	soma=maior+menor;
-	printf("A soma dos vetores %d+%d=%d", maior, menor, soma);
-	free(vetor);
+	soma=maior+menor; //soma a maior com a menor
+	printf("A soma dos vetores %d+%d=%d", maior, menor, soma); // exibe o maior e menor vetor
+	free(vetor); //libera o vetor
 	return (0);
 }
 
@@ -49,21 +49,21 @@ int main(void){
  	printf("\tDiciplina: PEX1243\n");
  	printf("\tAluna: Francisca Lorrayne");
  	printf("\n\n");
- 	printf("\tDigite a quantidade de alunos: ");
+ 	printf("\tDigite a quantidade de alunos: "); // solicitação da quantidade de alunos ao usuario
 		scanf("%d", &quantidade);
-	float*vetor_notas=(float*)malloc(quantidade*sizeof(float));
-	if(vetor_notas==NULL){
+	float*vetor_notas=(float*)malloc(quantidade*sizeof(float)); //alocação dinamica
+	if(vetor_notas==NULL){ //laço de repetição que verifica se a memoria
 		printf("Não tem espaço suficente na memória!");
-		exit(1);
+		exit(1); // finaliza o programa caso não haja espaço suficiante na memoria
  }
- 	for(i=0;i<quantidade;i++){
+ 	for(i=0;i<quantidade;i++){  // passando pela quantidade de notas digitadas no primeiro printf
  		printf("\tDigite a %d.o notas ", i+1);
  		scanf("%f", &vetor_notas[i]);
- 		media=media+vetor_notas[i];
+ 		media=media+vetor_notas[i]; // soma da media
 		 	 }
-		media=media/quantidade;
-		printf("\tA média é =%.2f", media);
-		free(vetor_notas); 	 
+		media=media/quantidade; //divisão da media pela quantidade de alunos da sala
+		printf("\tA média é =%.2f", media); //exibição da média final da sala
+		free(vetor_notas); //libera o vetor
  return (0);
 }
 
@@ -73,7 +73,7 @@ int main(void){
 #include<stdlib.h>
 #include<locale.h>
 
-void preenche_ordenado(int n, int *v); 
+void preenche_ordenado(int n, int *v); // protoripo da função
 
 int main(void){
 	int n, i, s;
@@ -83,24 +83,24 @@ int main(void){
  	printf("\tAluna: Francisca Lorrayne");
  	printf("\n\n");
  	
- 	printf("Digite os elementos dos vetores: ");
- 		scanf("%d", &n);
- 	int*vetor=(int*)malloc(n*sizeof(int));
- 		if(vetor==NULL){
+ 	printf("Digite os elementos dos vetores: "); // solicitação ao usuarios pela quantidade de numeros do vetor 
+ 		scanf("%d", &n); // recebimento dos valores
+ 	int*vetor=(int*)malloc(n*sizeof(int)); // alocação dinamica dos valores
+ 		if(vetor==NULL){ //verificação se há espaço na memoria suficiente
  			printf("Sem memoria!");
- 		exit(1);
+ 		exit(1); // finaliza o programa caso não haja espaço suficiante na memoria
 	 }
 	
-		for(i=0;i<n;i++){
-			printf("Digite a quantidade de números: ");
-			scanf("%d", &vetor[i]);
-			preenche_ordenado(n, vetor);
+		for(i=0;i<n;i++){ //laço de repetição que pede e passa por cada um dos numeros que o usuario digitou
+			printf("Digite a quantidade de números: "); // solicitação ao usuarios pela quantidade de numeros 
+			scanf("%d", &vetor[i]); recebimento dos valores
+			preenche_ordenado(n, vetor); 
 		}
-		for(int j=n-1;j>=0;j--){
+		for(int j=n-1;j>=0;j--){ // decremento dos numeros para exibir ao contrario
 			printf("[%d]\n", vetor[j]);
 		}
 printf("\n");
-	free(vetor);
+	free(vetor); //libera memoria
 	return 0;
 }
 	 
@@ -114,4 +114,39 @@ void preenche_ordenado(int n, int *v){
  		v[j]=resposta;
 	 }
  }
+}
+
+// QUESTÃO 4
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<locale.h>
+#define macro RAND_MAX 	//definição de uma variavel fixa para os numeros aleatorios
+
+int main(void){		
+	int j;						
+	double num, *vetor;
+	setlocale(LC_ALL, "Portuguese");
+	printf("Universidade Federal Rural do Semi-Árido-UFERSA\n ");
+ 	printf("Diciplina: PEX1243 \n");
+ 	printf("Aluna: Francisca Lorrayne");
+ 	printf("\n\n");
+
+	printf("\Digite o numero dos vetores: ");	//solicita ao usuário o num de vetores
+	scanf("%f", &num);					
+	
+	vetor=(double*) malloc(num*sizeof(double));		//abrir o espaÃ§o da memoria com uso do malloc
+	
+	printf("Intervalo da rand = [0,%d] \n", RAND_MAX);	//informando o intervalo de rand
+	
+	for(j=1; j<=10; j++){ // laço de repetição que passa pelos num de reptição de 10 fixos
+		printf("Numero %d = %d \n", j, rand());	 // numeros aleatorios
+	}
+	
+    for(j=1; j<=num; j++){ //  laço de repetição que  repete aleatoriamente os numeros dos usuarios 
+        printf("Numero %d = %d \n", j, rand());     // exibe os numeros aleatorios 
+	free(vetor);	// libera o espaço da memoria
+	return 0;	
+
+}
 }
