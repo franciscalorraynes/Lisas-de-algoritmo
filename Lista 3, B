@@ -38,7 +38,7 @@ int main(void){
             scanf("%d", &b[i][j]);  //leitura dos dados
         }
     }
-    int **matriz=multiplicacao(a, b, n); // recebe os valores de A e B resultante da multiplicação
+    int **matriz=sub(a, b, n); // recebe os valores de A e B resultante da subtração
     printf("A multiplicacao dos elementos de A * B \n"); 
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
@@ -64,7 +64,7 @@ void mat_libera(int** mat, int n){ //função que libera as matrizes alocada din
     free(mat);
 }
 
-int **multiplicacao(int **a, int **b, int n){ //função que faz a multiplicação das matrizes
+int **sub(int **a, int **b, int n){ //função que faz a subtração das matrizes
     int i, j;
     int **resul;
     resul=(int**)malloc(n*sizeof(int*)); //alocação dinamica de resul
@@ -73,7 +73,7 @@ int **multiplicacao(int **a, int **b, int n){ //função que faz a multiplicaç�
     }
     for( i=0;i<n;i++){
         for(j=0;j<n;j++){
-            resul[i][j]=a[i][j]*b[i][j]; //multiplicação entre a matriz A e B digitadas no int main 
+            resul[i][j]=a[i][j]-b[i][j]; //subtração entre a matriz A e B digitadas no int main 
         }
     }
     return resul; // retorna o resultado da função
