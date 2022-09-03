@@ -3,40 +3,40 @@
 #include<stdlib.h>
 #include<locale.h>
 
-int **soma(int **a, int **b, int n);
-void mat_libera(int** mat, int n);
+int **soma(int **a, int **b, int n); // prototipo da função
+void mat_libera(int** mat, int n); // prototipo da função libera matriz
 int main(void){
     int n, i, j;
     setlocale(LC_ALL, "Portuguese");
 
     printf("\n\n");
-    printf("Digite a dimensÃ£o da matriz nxn:\n ");
+    printf("Digite a dimensÃ£o da matriz nxn:\n "); //solicita ao usuario o valor da matriz 
     scanf("%d", &n);
 
     int **a,**b;
-    a=(int **)(malloc(n*sizeof(int*)));
+    a=(int **)(malloc(n*sizeof(int*))); //alcação dinamica de a
     for(i=0;i<n;i++){
         a[i]=(int*)(malloc(n*sizeof(int)));
     }
-    b=(int**)(malloc(n*sizeof(int*)));
+    b=(int**)(malloc(n*sizeof(int*))); //alocação dinamica de b
     for(j=0;j<n;j++){
         b[j]=(int*)(malloc(n*sizeof(int)));
     }
-    printf("Matriz A:\n");
+    printf("Matriz A:\n"); //passa pela marriz A e armazena seu valor
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
             printf("Digite os elementos: ");
             scanf("%d", &a[i][j]);
         }
     }
-    printf("Matriz B:\n");
+    printf("Matriz B:\n");  //passa pela marriz B e armazena seu valor
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
             printf("Digite os elementos: ");
             scanf("%d", &b[i][j]);
         }
     }
-    int **matriz=soma(a, b, n);
+    int **matriz=soma(a, b, n); // chama a função que realiza a realiza a soma entre as matrizes
     printf("A soma dos elementos de A + B \n");
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
@@ -45,8 +45,8 @@ int main(void){
         }
     }
 
-    mat_libera(a, n);
-    mat_libera(b, n);
+    mat_libera(a, n); //chamada da função que libera a matriz A 
+    mat_libera(b, n); //chamada da função que libera a matriz B
 
 
     return(0);
@@ -54,7 +54,7 @@ int main(void){
 }
 
 
-void mat_libera(int** mat, int n){
+void mat_libera(int** mat, int n){ //função que libera as matrizes A e B
   int i;
      for(i = 0; i < n; i++){
         free(mat[i]); 
@@ -62,16 +62,16 @@ void mat_libera(int** mat, int n){
     free(mat);
 }
 
-int **soma(int **a, int **b, int n){
+int **soma(int **a, int **b, int n){ // função que realiza a soma entre as matrizes A e B
     int i, j;
     int **resul;
     resul=(int**)malloc(n*sizeof(int*));
     for(i=0;i<n;i++){
-        resul[i]=(int*)malloc(n*sizeof(int));
+        resul[i]=(int*)malloc(n*sizeof(int)); //alocação dinamica do resul em int
     }
     for( i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            resul[i][j]=a[i][j]+b[i][j];
+        for(j=0;j<n;j++){ //laço de repetição que passa pelos valores das matrizes e realiza a soma
+            resul[i][j]=a[i][j]+b[i][j]; //soma
         }
     }
     return resul;
