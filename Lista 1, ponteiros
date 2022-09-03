@@ -46,13 +46,13 @@ A resposta que sai é 30,20,10;
  	printf("\n\n");
  	
  	
- 	printf("Digite um lado do hexágono: ");
+ 	printf("Digite um lado do hexágono: "); //solicitação ao usuario dos lados do hexagono
  		scanf("%f", &lado);
- 	calcula_hexagono(lado, &area, &perimetro);
- 	printf("A area do hexágono=%.2f\nO perimetro=%.2f\nO lado=%.2f	",area,perimetro, lado  );
+ 	calcula_hexagono(lado, &area, &perimetro); // chamada da função no int main
+ 	printf("A area do hexágono=%.2f\nO perimetro=%.2f\nO lado=%.2f	",area,perimetro, lado  ); //exibição do calculo dos lados da fução
  	return 0;
  }
-  void calcula_hexagono(float l, float *area, float *perimetro){
+  void calcula_hexagono(float l, float *area, float *perimetro){ //função que calcula o perimetro do hexagono
   	*area=(3*pow(l,2)*sqrt(3))/2;
   	*perimetro=6*l;
   }
@@ -64,7 +64,7 @@ A resposta que sai é 30,20,10;
 #include<locale.h>
 #include<math.h>
 
-char situacao(float p1, float p2, float p3, int faltas, int aulas, float *media);
+char situacao(float p1, float p2, float p3, int faltas, int aulas, float *media); //prototipo da função
 
 int main(void){
     setlocale(LC_ALL, "Portuguese");
@@ -72,39 +72,39 @@ int main(void){
     int faltas,aulas;
     printf("Universidade Federal Rural do Semi-Árido\n ");
     printf("Diciplina: PEX1243 \n");
-    printf("Aluna: Francisca Lorrayne");
+    printf("Aluna: Francisca Lorrayne"); 
     printf("\n\n");
-    printf("Digite a primeira nota: ");
+    printf("Digite a primeira nota: "); //solicitação ao usuario das notas
     scanf("%f", &p1);
-    printf("Digite a segunda nota: ");
+    printf("Digite a segunda nota: "); //solicitação ao usuario das notas
     scanf("%f", &p2);
-    printf("Digite a terceira nota: ");
+    printf("Digite a terceira nota: "); //solicitação ao usuario das notas
     scanf("%f", &p3);
-    printf("Digite o total de faltas: ");
+    printf("Digite o total de faltas: "); //solicitação ao usuario das faltas
     scanf("%d", &faltas);
-    printf("Digite o total de aulas: ");
+    printf("Digite o total de aulas: "); //solicitação ao usuario das aulas
     scanf("%d", &aulas);
     
-    char s = situacao(p1, p2, p3, faltas, aulas, &media);
+    char s = situacao(p1, p2, p3, faltas, aulas, &media); //chamada da função no int main
 
-    printf("Nota 1,2,3=%.2f%.2f.2f\nTotal de aulas=%d\nTotal de faltas=%d\nMédia=%.2f", p1,p2,p3,aulas,faltas,media); 
+    printf("Nota 1,2,3=%.2f%.2f.2f\nTotal de aulas=%d\nTotal de faltas=%d\nMédia=%.2f", p1,p2,p3,aulas,faltas,media);  // exibição da media, falta, aulas e notas 
 
 return(0);
 }
 
-char situacao(float p1, float p2, float p3, int faltas, int aulas, float *media){
+char situacao(float p1, float p2, float p3, int faltas, int aulas, float *media){ //fução que calcula a media
 
-    *media=(p1+p2+p3)/3;
+    *media=(p1+p2+p3)/3; // calculo da media
     int a;
-    a=(100*faltas/aulas);
+    a=(100*faltas/aulas); //calculo das faltas
 
-    if(a<=25 && *media>=6){
+    if(a<=25 && *media>=6){ //verifica se a media é >=  6 e exibe caso a afimação seja verdadeira
             return'A';
         } 
-    else if(a<=25 && *media<6){
+    else if(a<=25 && *media<6){ //verifica se a media é < que 6 e exibe caso a afimação seja verdadeira
             return'R'; 
         }
-    else {
+    else { // se nenhuma das afimações acima for verdadeira exibe esta
             return'F'; 
         }
  
