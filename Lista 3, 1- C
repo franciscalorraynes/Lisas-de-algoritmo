@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include<locale.h>
 
-int **soma(int **a, int **b, int n);
+int **soma(int **a, int **b, int n); // prototipo da função
 
 int main(void){
 	int n, i, j;
@@ -12,60 +12,60 @@ int main(void){
  	printf("Diciplina: PEX1243 \n");
  	printf("Aluna: Francisca Lorrayne");
  	printf("\n\n");
-	printf("Digite a dimensão da matriz:\n ");
+	printf("Digite a dimensão da matriz:\n "); //solicitação da dimensão da matriz
 	scanf("%d", &n);
 	
-	int **a,**b;
-	a=(int **)(malloc(n*sizeof(int*)));
-	for(i=0;i<n;i++){
+	int **a,**b; // vetores tipo int 
+	a=(int **)(malloc(n*sizeof(int*))); //alocação dinamica  de a
+	for(i=0;i<n;i++){ //laço de repetição que vai passar pelo valor alocado dinamicamente
 		a[i]=(int*)(malloc(n*sizeof(int)));
 	}
-	b=(int**)(malloc(n*sizeof(int*)));
-	for(j=0;j<n;j++){
-		b[j]=(int*)(malloc(n*sizeof(int)));
+	b=(int**)(malloc(n*sizeof(int*)));  //alocação dinamica  de b
+	for(j=0;j<n;j++){ //laço de repetição que vai passar pelo valor alocado dinamicamente
+		b[j]=(int*)(malloc(n*sizeof(int))); 
 	}
-	printf("Matriz A:\n");
-	for(i=0;i<n;i++){
+	printf("Matriz A:\n"); 
+	for(i=0;i<n;i++){ //laço de repetição que  passa pela quantidade de elementos da matriz a solicitados pelo usuario 
 		for(j=0;j<n;j++){
-			printf("Digite a quantidade de elementos: ");
-			scanf("%d", &a[i][j]);
+			printf("Digite a quantidade de elementos: "); //solicita a quantidade de elementos  da matriz a ao usuario 
+			scanf("%d", &a[i][j]); //leitura dos dados
 		}
 	}
 		printf("Matriz B:\n");
-	for(i=0;i<n;i++){
+	for(i=0;i<n;i++){ //laço de repetição que  passa pela quantidade de elementos da matriz b solicitados pelo usuario 
 		for(j=0;j<n;j++){
-			printf("Digite a quantidade de elementos: ");
-			scanf("%d", &b[i][j]);
+			printf("Digite a quantidade de elementos: "); //solicita a quantidade de elementos  da matriz b ao usuario 
+			scanf("%d", &b[i][j]);  //leitura dos dados
 		}
 	}
-	int **matriz=soma(a, b, n);
-	for(i=0;i<n;i++){
+	int **matriz=soma(a, b, n); // recebe os valores de A e B e soma 
+	for(i=0;i<n;i++){ 
 		for(j=0;j<n;j++){
-			printf("A soma dos elementos A e B = %d ", matriz[i][j]);
+			printf("A soma dos elementos A e B = %d ", matriz[i][j]); //exibe a soma 
 
 		}
 	}
-		for(i=0;i<n;i++){
+		for(i=0;i<n;i++){ //laço de repetição que libera a matriz a 
 			free(a[i]);
 		}
 			free(a);
-		for(i=0;i<n;i++){
-			free(b[i]);
+		for(i=0;i<n;i++){  //laço de repetição que libera a matriz b
+			free(b[i]); 
 		}
 	free(b);
 	return(0);
 	
 }
-int **soma(int **a, int **b, int n){
+int **soma(int **a, int **b, int n){ // função que realiza a soma das matrizes 
 	int i, j;
 	int **resul;
-	resul=(int**)malloc(n*sizeof(int*));
+	resul=(int**)malloc(n*sizeof(int*)); //alocação dinamica de resul
 	for(i=0;i<n;i++){
 	resul[i]=(int*)malloc(n*sizeof(int));	
 	}
 	for( i=0;i<n;i++){
 		for(j=0;j<n;j++){
-			resul[i][j]=a[i][j]*b[i][j];
+			resul[i][j]=a[i][j]*b[i][j]; //soma entre a matriz A e B digitadas no int main 
 		}
 	}
 	return resul;
