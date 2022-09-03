@@ -67,11 +67,6 @@ void altera_preco(Ingresso* i, float valor){ //função que altera o preço
  
 }
 
-
-
-
-
-
 //QUESTÃO 2
 
 #include<stdio.h>
@@ -181,3 +176,83 @@ void imprime_turma_aprovados(int n, Aluno**alunos, char turma){ //função para 
         }
     }
 }
+
+//QUESTÃO 3
+
+#include <stdio.h>
+
+int main(void) {
+	int n, i, j;
+	int mat[n][n];
+	int soma_principal = 0, soma_secund = 0; // variavei de somas iniciadas em 0
+	printf("Digite a quantidade da matriz: "); //pedir ao usuario para digitar a quantidade da matriz
+	scanf("%i", &n);
+	
+	for (i = 0; i < n; i++) { //laço de repetição que recebe a quantidade por linha da matriz 
+		for (j = 0; j < n; j++) { 
+			printf("Digite as linhas da matriz:");
+			scanf("%d", &mat[i][j]);
+		}
+	}
+	for (i = 0; i < n; i++) { //laço de repetição que recebe a quantidade por coluna  da matriz 
+		for (j = 0; j < n; j++) {
+			printf("Digite as colunas da matriz: ");
+			printf("%d ", mat[i][j]);
+		}
+	}
+	//soma diagonal principal
+	for (i = 0; i < n; i++) {
+		soma_principal += mat[i][i];
+	}	
+	//soma diagonal secundária
+	for (i = 0; i < n; i++) {
+		soma_secund += mat[i][n-i-1];
+	}
+	//soma linhas
+	printf("\nSoma das linhas: ");
+	int vetL[n];
+	for (i = 0; i < n; i++) {
+		vetL[i] = 0;
+		for (j = 0; j < n; j++) {
+			vetL[i] += mat[i][j];
+		}
+	}
+	for (i = 0; i < n; i++) {
+		printf("%d ", vetL[i]); //exibição da quantidade de linhas
+	}
+
+	//soma colunas
+	printf("\nSoma das colunas: "); 
+	int vetC[n];
+	for (j = 0; j < n; j++) {
+		vetC[j] = 0;
+		for (i = 0; i < n; i++) {
+			vetC[j] += mat[i][j];
+		}
+	}
+	for (i = 0; i < n; i++) {
+		printf("%d ", vetC[i]); //exibição da quantidade de colunas
+	}
+	
+	printf("\nSoma diagonal principal %d e secundária %d\n", soma_principal, soma_secund); //exibição da soma principal e secundaria
+
+	int testaL = 1, testaC = 1; 
+	for (i = 1; i <  n; i++) {
+		if (vetL[i] != vetL[i-1]) { //testa se as linhas e colunas são iguais 
+			testaL = 0;
+			break;
+		} else if (vetC[i] != vetC[i-1]) {
+			testaC = 0;
+			break;
+		}
+	}
+	//testa se as linhas e colunas são iguais , caso seja 
+	if (testaL && testaC && soma_principal == soma_secund && soma_principal == vetL[0]) { 
+		printf("Quadrado magico"); // exibe que é magico
+	} else {
+		printf("Quadrado nao magico"); // exibe que não é magico
+	}
+
+	return 0;
+}
+
