@@ -126,7 +126,7 @@ void matricula(int n, Aluno**alunos){  // função que recebe os dados dos aluno
 }
 void lanca_notas(int n, Aluno**alunos){ // estrutura que lança as notas, pede ao usuario e a armazena
     int j;
-   if (j<0 || j>=n) {
+   if (j<0 || j>=n) { //laço de repetição que verifica se tem o vetor dentro do indicie 
      printf("Indice fora do limite do vetor\n");
      exit(1);
      }
@@ -161,19 +161,19 @@ void imprime_turma(int n, Aluno** alunos, char turma){ //função que mostra os 
      exit(1);
      }
         for(j=0;j<n;j++){
-    printf("O %d.o nome = %s\n ", j+1,alunos[j]->nome );
-    printf("%d.a turma =%s\n ", j+1, alunos[j]->turma);
-    printf("Matricula %d =%d \n", j+1, alunos[j]->mat);
+    printf("O %d.o nome = %s\n ", j+1,alunos[j]->nome ); //imprime o nome
+    printf("%d.a turma =%s\n ", j+1, alunos[j]->turma); //imprime turma
+    printf("Matricula %d =%d \n", j+1, alunos[j]->mat); //imprime matricula
 }
 }
 void imprime_turma_aprovados(int n, Aluno**alunos, char turma){ //função para mostrar a turma 
     int j;
     for(j=0;j<n;j++){
-        if(alunos[j]!=NULL && alunos[j]->turma==turma){
-           if(alunos[j]->media>=7){
-                printf("\n Matricula:  %s \n", alunos[j]->mat);
-                printf("Nome: %s \n", alunos[j]->nome);
-                printf("Media: %f \n, APROVADO \n", alunos[j]->media);
+        if(alunos[j]!=NULL && alunos[j]->turma==turma){ //verifica se tem espaço
+           if(alunos[j]->media>=7){ // verifica se a média é maior que 7, se for
+                printf("\n Matricula:  %s \n", alunos[j]->mat); //apresenta a matricula
+                printf("Nome: %s \n", alunos[j]->nome); //o nome
+                printf("Media: %f \n, APROVADO \n", alunos[j]->media); //e a media
            }
         }
     }
