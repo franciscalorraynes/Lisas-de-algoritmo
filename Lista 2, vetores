@@ -1,7 +1,7 @@
 //QUESTÃO 1
-#include<stdio.h>
-#include<stdlib.h>
-#include<locale.h>
+#include<stdio.h> //biblioteca
+#include<stdlib.h>//biblioteca
+#include<locale.h> //biblioteca
 
 int main(void){
 	int tamanho, i, soma, menor, maior; //declaração das variaveis
@@ -35,9 +35,9 @@ int main(void){
 }
 
 //QUESTÃO 2
-#include<stdio.h>
-#include<stdlib.h>
-#include<locale.h>
+#include<stdio.h> //biblioteca
+#include<stdlib.h> //biblioteca
+#include<locale.h> //biblioteca
 
 
 int main(void){
@@ -69,14 +69,14 @@ int main(void){
 
 //QUESTÃO 3
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<locale.h>
+#include<stdio.h> //biblioteca
+#include<stdlib.h> //biblioteca
+#include<locale.h> //biblioteca
 
 void preenche_ordenado(int n, int *v); // protoripo da função
 
-int main(void){
-	int n, i, s;
+int main(void){ // programa principal
+	int n, i, s; //declaração de variavel
 	setlocale(LC_ALL, "Portuguese");
 	printf("\tUniversidade Federal Rural do Semi-Árido-UFERSA\n ");
  	printf("\tDiciplina: PEX1243\n");
@@ -94,23 +94,23 @@ int main(void){
 		for(i=0;i<n;i++){ //laço de repetição que pede e passa por cada um dos numeros que o usuario digitou
 			printf("Digite a quantidade de números: "); // solicitação ao usuarios pela quantidade de numeros 
 			scanf("%d", &vetor[i]); recebimento dos valores
-			preenche_ordenado(n, vetor); 
+			preenche_ordenado(n, vetor);  // chama do vetor 
 		}
 		for(int j=n-1;j>=0;j--){ // decremento dos numeros para exibir ao contrario
-			printf("[%d]\n", vetor[j]);
+			printf("[%d]\n", vetor[j]); //apresenta os vetores aleatorios 
 		}
 printf("\n");
 	free(vetor); //libera memoria
-	return 0;
+	return 0; //fim de programa
 }
 	 
-void preenche_ordenado(int n, int *v){
- int j, resposta;
- for(int i=0;i<n;i++){
+void preenche_ordenado(int n, int *v){ //função que preenche os vetores aleatorios 
+ int j, resposta; //declaração de variavel
+ for(int i=0;i<n;i++){ // laço de repetição aninhado que passa pelos numeros do vetor
  	for( j=0;j<n;j++);
- 	 resposta=v[j];
+ 	 resposta=v[j]; // recebe a o vetor e armazena em uma nova varivavel 
  	if(resposta>v[j]){
- 		v[i]=v[j];
+ 		v[i]=v[j]; //troca de posição
  		v[j]=resposta;
 	 }
  }
@@ -118,9 +118,10 @@ void preenche_ordenado(int n, int *v){
 
 // QUESTÃO 4
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<locale.h>
+#include<stdio.h> //biblioteca
+#include<stdlib.h> //biblioteca
+#include<locale.h> //biblioteca
+
 #define macro RAND_MAX 	//definição de uma variavel fixa para os numeros aleatorios
 
 int main(void){		
