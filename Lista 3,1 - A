@@ -1,21 +1,21 @@
 //QUESTÃƒO 1
-#include<stdio.h>
-#include<stdlib.h>
-#include<locale.h>
+#include<stdio.h> // declaração de biblioteca
+#include<stdlib.h>  // declaração de biblioteca
+#include<locale.h>  // declaração de biblioteca
 
 int **soma(int **a, int **b, int n); // prototipo da função
 void mat_libera(int** mat, int n); // prototipo da função libera matriz
 int main(void){
-    int n, i, j;
+    int n, i, j; // declaração de variavel tipo int
     setlocale(LC_ALL, "Portuguese");
 
     printf("\n\n");
     printf("Digite a dimensÃ£o da matriz nxn:\n "); //solicita ao usuario o valor da matriz 
-    scanf("%d", &n);
+    scanf("%d", &n); // ler os dados 
 
-    int **a,**b;
+    int **a,**b; //declaração de ponteiro tipo int 
     a=(int **)(malloc(n*sizeof(int*))); //alcação dinamica de a
-    for(i=0;i<n;i++){
+    for(i=0;i<n;i++){ //laço de repetição 
         a[i]=(int*)(malloc(n*sizeof(int)));
     }
     b=(int**)(malloc(n*sizeof(int*))); //alocação dinamica de b
