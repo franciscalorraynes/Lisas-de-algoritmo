@@ -1,19 +1,19 @@
 //QUESTÃO 1
-#include<stdio.h>
-#include<stdlib.h>
-#include<locale.h>
+#include<stdio.h>  // declaração de biblioteca
+#include<stdlib.h>  // declaração de biblioteca
+#include<locale.h> // declaração de biblioteca
 
 int **soma(int **a, int **b, int n); // prototipo da função
 
 int main(void){
-	int n, i, j;
+	int n, i, j; //declaração das variaveis 
 	setlocale(LC_ALL, "Portuguese");
 	printf("Universidade Federal Rural do Semi-Árido-UFERSA\n ");
  	printf("Diciplina: PEX1243 \n");
  	printf("Aluna: Francisca Lorrayne");
  	printf("\n\n");
 	printf("Digite a dimensão da matriz:\n "); //solicitação da dimensão da matriz
-	scanf("%d", &n);
+	scanf("%d", &n); //ler as dimensões
 	
 	int **a,**b; // vetores tipo int 
 	a=(int **)(malloc(n*sizeof(int*))); //alocação dinamica  de a
@@ -38,10 +38,10 @@ int main(void){
 			scanf("%d", &b[i][j]);  //leitura dos dados
 		}
 	}
-	int **matriz=soma(a, b, n); // recebe os valores de A e B e soma 
+	int **matriz=soma(a, b, n); // recebe os valores de A e B e multiplica 
 	for(i=0;i<n;i++){ 
 		for(j=0;j<n;j++){
-			printf("A soma dos elementos A e B = %d ", matriz[i][j]); //exibe a soma 
+			printf("A soma dos elementos A e B = %d ", matriz[i][j]); //exibe a multiplicação 
 
 		}
 	}
@@ -56,18 +56,18 @@ int main(void){
 	return(0);
 	
 }
-int **soma(int **a, int **b, int n){ // função que realiza a soma das matrizes 
+int **soma(int **a, int **b, int n){ // função que realiza a multiplicação das matrizes 
 	int i, j;
 	int **resul;
 	resul=(int**)malloc(n*sizeof(int*)); //alocação dinamica de resul
 	for(i=0;i<n;i++){
-	resul[i]=(int*)malloc(n*sizeof(int));	
+	resul[i]=(int*)malloc(n*sizeof(int));	// guarda o vetor resul dinamicamente
 	}
 	for( i=0;i<n;i++){
 		for(j=0;j<n;j++){
-			resul[i][j]=a[i][j]*b[i][j]; //soma entre a matriz A e B digitadas no int main 
+			resul[i][j]=a[i][j]*b[i][j]; //multiplicação entre a matriz A e B digitadas no int main 
 		}
 	}
-	return resul;
+	return resul; //retorna para o int main o resultado da multiplicação
 
 }
