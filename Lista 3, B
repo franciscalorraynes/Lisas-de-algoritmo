@@ -1,19 +1,19 @@
 //QUESTÃƒO 1
-#include<stdio.h>
-#include<stdlib.h>
-#include<locale.h>
+#include<stdio.h>  // declaração de biblioteca
+#include<stdlib.h>  // declaração de biblioteca
+#include<locale.h>  // declaração de biblioteca
 
 int **soma(int **a, int **b, int n); // prototipo da função
 
 void mat_libera(int** mat, int n); // prototipo da função para liberar a matriz
 
 int main(void){
-    int n, i, j;
+    int n, i, j; //declaração da variavel 
     setlocale(LC_ALL, "Portuguese");
 
     printf("\n\n");
     printf("Digite a dimensão da matriz:\n "); //solicitação da dimensão da matriz
-    scanf("%d", &n);
+    scanf("%d", &n); //ler os dados 
 
     int **a,**b; // vetores tipo int 
     a=(int **)(malloc(n*sizeof(int*))); //alocação dinamica  de a
@@ -69,7 +69,7 @@ int **sub(int **a, int **b, int n){ //função que faz a subtração das matrize
     int **resul;
     resul=(int**)malloc(n*sizeof(int*)); //alocação dinamica de resul
     for(i=0;i<n;i++){
-        resul[i]=(int*)malloc(n*sizeof(int));
+        resul[i]=(int*)malloc(n*sizeof(int)); //alocação dinamica da função para guardar o vetor dinamicamente 
     }
     for( i=0;i<n;i++){
         for(j=0;j<n;j++){
