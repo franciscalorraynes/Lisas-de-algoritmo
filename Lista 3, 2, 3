@@ -1,27 +1,27 @@
-#include<stdio.h>
-#include<locale.h>
-#include<stdlib.h>
+#include<stdio.h> //declaração de biblioteca
+#include<locale.h>//declaração de biblioteca
+#include<stdlib.h>//declaração de biblioteca
 int posicao(int **matriz, int n, int Posicao); //prototipo da função
 void mat_libera(int** mat, int n); //  //prototipo da função
 int main(void){
 	
-	int i, j, n;
+	int i, j, n; //declaração de variaveis
 	setlocale(LC_ALL, "Portuguese");
  	printf("Universidade Federal Rural do Semi-Árido\n ");
  	printf("Diciplina: PEX1243 \n");
  	printf("Aluna: Francisca Lorrayne");
  	printf("\n\n");
 	printf("Digite as dimensões da matriz: "); //solicitação ao usuario do tamanho da matriz
-	scanf("%d", &n);
+	scanf("%d", &n); //ler os dados
 	
 	int **matriz=(int**)(malloc(n*sizeof(int*))); //alocação dinamica da matriz
 	for(i=0;i<n;i++){
-		matriz[i]=(int*)malloc(n*sizeof(int));
+		matriz[i]=(int*)malloc(n*sizeof(int)); //aloca o vetor dinamicamente
 	}
 	for(i=0;i<n;i++){ //laço de repetição que passa pelas posiçoes da matriz uma por uma
 		for(j=0;j<n;j++){
-			printf("Digite a posição da matriz: ");
-			scanf("%d", &matriz[i][j]);
+			printf("Digite a posição da matriz: "); //solicita a posição da matriz
+			scanf("%d", &matriz[i][j]); //ler a posição
 		}
 	}
 int r=posicao(matriz, n, 6); // retorno da função da matriz de posição
@@ -41,7 +41,7 @@ void mat_libera(int** mat, int n){ //função sem retorno para liberar a matriz
     free(mat);
 }
 int posicao(int **matriz, int n, int p){ //função que mostra e armazena a posição da matriz
-	int i, j;
+	int i, j; //declaração de variaveis
 	for(i=0;i<n;i++){
 		for(j=0;j<n;j++){
 			if(matriz[i][j]==p){ // compapa a posição da matriz e verifica se ela esta dentro das dimensões da matriz, se for 
@@ -49,32 +49,32 @@ int posicao(int **matriz, int n, int p){ //função que mostra e armazena a posi
 			}
 		}
 	}
-	return 0; // se não, não retorna 
+	return 0; // se não, retorna 0 
 
 }
 
 QUESTÃO 3
 
 
-#include <stdio.h>
+#include <stdio.h> //declaração de biblioteca
 
 int main(void) {
-	int n, i, j;
-	int mat[n][n];
+	int n, i, j; //declaração de variaveis
+	int mat[n][n]; //declaração de matriz
 	int soma_principal = 0, soma_secund = 0; // variavei de somas iniciadas em 0
 	printf("Digite a quantidade da matriz: "); //pedir ao usuario para digitar a quantidade da matriz
 	scanf("%i", &n);
 	
 	for (i = 0; i < n; i++) { //laço de repetição que recebe a quantidade por linha da matriz 
 		for (j = 0; j < n; j++) { 
-			printf("Digite as linhas da matriz:");
-			scanf("%d", &mat[i][j]);
+			printf("Digite as linhas da matriz:"); //solicita as linhas da matriz
+			scanf("%d", &mat[i][j]); //ler as informações 
 		}
 	}
 	for (i = 0; i < n; i++) { //laço de repetição que recebe a quantidade por coluna  da matriz 
 		for (j = 0; j < n; j++) {
-			printf("Digite as colunas da matriz: ");
-			printf("%d ", mat[i][j]);
+			printf("Digite as colunas da matriz: "); /solicita as colunas da matriz
+			printf("%d ", mat[i][j]);  //ler as informações 
 		}
 	}
 	//soma diagonal principal
